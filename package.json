@@ -1,0 +1,30 @@
+{
+  "name": "fic-ecommerce-back-end",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-i18n": "4.14.3",
+    "@strapi/plugin-users-permissions": "4.14.3",
+    "@strapi/strapi": "4.14.3",
+    "axios": "^1.5.1",
+    "mysql": "2.18.1"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "2284a740-64d4-4e6f-b0c1-3c5cf00f5eb4"
+  },
+  "engines": {
+    "node": ">=16.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
