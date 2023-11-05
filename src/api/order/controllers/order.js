@@ -10,12 +10,9 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({
     async create(ctx) {
         const result = await super.create(ctx);
 
-        console.log('result', result);
 
         const { default: axios } = require("axios");
         const { xenditHeaders } = require('../helpers/header.js');
-
-        console.log(xenditHeaders);
 
         const payload = {
             external_id: result.data.id.toString(),
@@ -25,7 +22,6 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({
             success_redirect_url: 'https://docs.xendit.co/id/accounts',
         }
 
-        console.log(payload);
         const response = await axios({
             method: 'POST',
             url: 'https://api.xendit.co/v2/invoices',
@@ -33,7 +29,9 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({
             data: JSON.stringify(payload)
         });
 
-        console.log('response', response.data);
+        let params = { 'data': { 'invoiceUrl': response.data['invoice_url'] } }
+
+        let updateOrder = await strapi.service('api::order.order').update(parseInt(result.data.id.toString()), params);
 
         return JSON.stringify(response.data);
     }
