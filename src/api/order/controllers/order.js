@@ -21,7 +21,8 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({
             external_id: result.data.id.toString(),
             payer_email: 'arifinjohan493@gmail.com',
             description: 'Payment for product',
-            amount: result.data.attributes.totalPrice
+            amount: result.data.attributes.totalPrice,
+            success_redirect_url: 'https://docs.xendit.co/id/accounts',
         }
 
         console.log(payload);
